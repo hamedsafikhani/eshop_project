@@ -20,5 +20,5 @@ class Product(models.Model):
         super().save(*args,**kwargs)
 
     def __str__(self):
-        return f"title : {self.title} , Price : {self.price} "
+        return f"{self.title}"
 
