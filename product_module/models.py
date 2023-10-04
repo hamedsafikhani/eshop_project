@@ -11,7 +11,7 @@ class Product(models.Model):
     rating = models.IntegerField(default=0,validators=[MinValueValidator(1),MaxValueValidator(5)])
     short_description = models.CharField(max_length=360,null=True)
     is_active = models.BooleanField(default=False)
-    slug = models.SlugField(default='',null=False)
+    slug = models.SlugField(default='',null=False,db_index=True) # db_index = True : busy field for speed queries to DB
     def get_absolute_url(self):
         return reverse('product_detail',args=[self.slug])
 
