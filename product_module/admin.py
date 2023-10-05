@@ -10,11 +10,12 @@ class ProductAdmin(admin.ModelAdmin):
         'slug': ['title']
     }
 
-    list_display = ['title','price','rating','is_active','color','category']
+    list_display = ['title','price','rating','is_active','category']
     list_filter = ['rating','is_active']
-    list_editable = ['price','rating','is_active','color','category']
+    list_editable = ['price','rating','is_active','category']
 
 
 
 admin.site.register(models.Product, ProductAdmin)
 admin.site.register(models.ProductCategory)
+admin.site.register(models.ProductInformation)
