@@ -13,7 +13,7 @@ class ProductCategory(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(ProductCategory,on_delete=models.CASCADE,null=True)
+    category = models.ForeignKey(ProductCategory,on_delete=models.CASCADE,null=True,related_name='products')
     title = models.CharField(max_length=100)
     price = models.IntegerField()
     rating = models.IntegerField(default=0,validators=[MinValueValidator(1),MaxValueValidator(5)])
