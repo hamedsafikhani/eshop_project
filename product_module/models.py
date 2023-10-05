@@ -4,8 +4,16 @@ from django.urls import reverse
 from django.utils.text import slugify
 # Create your models here.
 
+class ProductCategory(models.Model):
+    title = models.CharField(max_length=300,verbose_name='عنوان')
+    url_title = models.CharField(max_length=300,verbose_name='عنوان url')
+
+    def __str__(self):
+        return self.title
+
 
 class Product(models.Model):
+    category = models.ForeignKey(ProductCategory,on_delete=models.CASCADE,null=True)
     title = models.CharField(max_length=100)
     price = models.IntegerField()
     rating = models.IntegerField(default=0,validators=[MinValueValidator(1),MaxValueValidator(5)])
