@@ -11,12 +11,19 @@ class ProductCategory(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'دسته بندی'
+        verbose_name_plural =  'دسته بندی ها'
+
 class ProductInformation(models.Model):
     color = models.CharField(max_length=10,verbose_name='رنگ')
     size = models.CharField(max_length=10,verbose_name='سایز')
 
     def __str__(self):
         return f'{self.color}-{self.size}'
+    class Meta:
+        verbose_name = 'اطلاعات محصول'
+        verbose_name_plural = 'تمامی اطلاعات محصول'
 class Product(models.Model):
     title = models.CharField(max_length=100)
     category = models.ForeignKey(
@@ -56,4 +63,8 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+    class Meta:
+        verbose_name = 'محصول'
+        verbose_name_plural = 'محصولات'
 
