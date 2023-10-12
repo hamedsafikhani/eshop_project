@@ -16,6 +16,15 @@
 				    	<form id="main-contact-form" class="contact-form row" name="contact-form" action="{% url 'contact_us_page' %}" method="post">
                             {% csrf_token %}
 
+{#                            {% for fields in contact_form %} {% comment %}can do like this{% endcomment %}#}
+{#                                 <div class="form-group col-md-12">#}
+{#                                    {{ fields.label }}#}
+{#                                    {{ fields }}#}
+{#                                    {{ fields.errors }}#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+
+
                             <div class="form-group col-md-6">
 				                {{ contact_form.email.label }}
                                 {{ contact_form.email }}
@@ -29,15 +38,15 @@
 				            </div>
 
                             <div class="form-group col-md-12">
-				                {{ contact_form.subject.label }}
-                                {{ contact_form.subject }}
-                                {{ contact_form.subject.errors }}
+				                {{ contact_form.title.label }}
+                                {{ contact_form.title }}
+                                {{ contact_form.title.errors }}
 				            </div>
 
                             <div class="form-group col-md-12">
-				                {{ contact_form.text.label }}
-                                {{ contact_form.text }}
-                                {{ contact_form.text.errors }}
+				                {{ contact_form.message.label }}
+                                {{ contact_form.message }}
+                                {{ contact_form.message.errors }}
 				            </div>
 
 {#				            <div class="form-group col-md-6">#}

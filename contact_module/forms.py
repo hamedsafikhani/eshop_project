@@ -1,5 +1,6 @@
 from django import forms
 
+from .models import ContactUs
 
 
 class ContactUsForm(forms.Form): # django forms fields
@@ -16,10 +17,17 @@ class ContactUsForm(forms.Form): # django forms fields
     email = forms.EmailField(label='ایمیل',widget=forms.EmailInput(attrs={
             'class' : 'form-control'
         }))
-    subject = forms.CharField(label='عنوان',widget=forms.TextInput(attrs={
+    title = forms.CharField(label='عنوان',widget=forms.TextInput(attrs={
             'class' : 'form-control'
         }))
-    text = forms.CharField(label='متن پیام',widget=forms.Textarea(attrs={
+    message = forms.CharField(label='متن پیام',widget=forms.Textarea(attrs={
             'class' : 'form-control',
             'id' : 'message'
         }))
+
+class ContactUsModelForm(forms.ModelForm):
+    class Meta:
+        model = ContactUs
+        fields = ['title','email','full_name','message']
+        # fields = '__all__'
+        # exclude = ['create_date','response','is_read_by_admin']
