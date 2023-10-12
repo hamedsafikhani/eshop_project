@@ -31,7 +31,7 @@
                                 {{ contact_form.email.errors }}
 				            </div>
 
-                           <div class="form-group col-md-6 {% if contact_form.full_name.errors  %} text-danger {% endif %}">
+                           <div class="form-group col-md-6 {% comment %}{% if contact_form.full_name.errors  %} text-danger {% endif %}{% endcomment %}">
 				                {{ contact_form.full_name.label }}
                                 {{ contact_form.full_name }}
                                 {{ contact_form.full_name.errors }}
