@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product
 from django.db.models import Avg
-from django.views.generic import TemplateView,ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 
 # Create your views here.
@@ -34,15 +34,22 @@ class ProductListView1(TemplateView):
 #         "products": products
 #     })
 
-class ProductDetailView(TemplateView):
-    template_name = 'product_module/product_detail.html'
+# class ProductDetailView(TemplateView): ba estefade az TemplateView
+#     template_name = 'product_module/product_detail.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ProductDetailView,self).get_context_data()
+#         slug = kwargs['slug']
+#         product = get_object_or_404(Product, slug=slug)
+#         context['product'] = product
+#         return context
 
-    def get_context_data(self, **kwargs):
-        context = super(ProductDetailView,self).get_context_data()
-        slug = kwargs['slug']
-        product = get_object_or_404(Product, slug=slug)
-        context['product'] = product
-        return context
+class ProductDetailView(DetailView):#ba estefade az Detail View
+    #khodesh az url/slug ro barmidare va behtare ke az get_absolute_trl tooye model estefade she,ba pk <int:pk> ham mishe
+    template_name = 'product_module/product_detail.html'
+    model = Product
+
+
 # def product_detail(request, slug):
 #     product = get_object_or_404(Product, slug=slug)
 #     return render(request, 'product_module/product_detail.html', context={
