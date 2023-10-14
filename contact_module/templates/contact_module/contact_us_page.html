@@ -16,7 +16,7 @@
 				    	<form id="main-contact-form" class="contact-form row" name="contact-form" action="{% url 'contact_us_page' %}" method="post">
                             {% csrf_token %}
 
-{#                            {% for fields in contact_form %} {% comment %}can do like this{% endcomment %}#}
+{#                            {% for fields in form %} {% comment %}can do like this{% endcomment %}#}
 {#                                 <div class="form-group col-md-12">#}
 {#                                    {{ fields.label }}#}
 {#                                    {{ fields }}#}
@@ -26,27 +26,27 @@
 
 
                             <div class="form-group col-md-6">
-				                {{ contact_form.email.label }}
-                                {{ contact_form.email }}
-                                {{ contact_form.email.errors }}
+				                {{ form.email.label }}
+                                {{ form.email }}
+                                {{ form.email.errors }}
 				            </div>
 
-                           <div class="form-group col-md-6 {% comment %}{% if contact_form.full_name.errors  %} text-danger {% endif %}{% endcomment %}">
-				                {{ contact_form.full_name.label }}
-                                {{ contact_form.full_name }}
-                                {{ contact_form.full_name.errors }}
-				            </div>
-
-                            <div class="form-group col-md-12">
-				                {{ contact_form.title.label }}
-                                {{ contact_form.title }}
-                                {{ contact_form.title.errors }}
+                           <div class="form-group col-md-6 {% comment %}{% if form.full_name.errors  %} text-danger {% endif %}{% endcomment %}">
+				                {{ form.full_name.label }}
+                                {{ form.full_name }}
+                                {{ form.full_name.errors }}
 				            </div>
 
                             <div class="form-group col-md-12">
-				                {{ contact_form.message.label }}
-                                {{ contact_form.message }}
-                                {{ contact_form.message.errors }}
+				                {{ form.title.label }}
+                                {{ form.title }}
+                                {{ form.title.errors }}
+				            </div>
+
+                            <div class="form-group col-md-12">
+				                {{ form.message.label }}
+                                {{ form.message }}
+                                {{ form.message.errors }}
 				            </div>
 
 {#				            <div class="form-group col-md-6">#}
