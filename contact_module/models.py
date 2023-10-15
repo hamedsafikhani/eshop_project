@@ -24,4 +24,5 @@ class ContactUs(models.Model):
 
 
 class UserProfile(models.Model):
-    user_image = models.FileField(upload_to='images') # add to setting BASEDIR / images for media file
+    # user_image = models.FileField(upload_to='images') # add to setting BASEDIR / images for media file
+    user_image = models.ImageField(upload_to='images') # add to setting BASEDIR / images for media file + other config

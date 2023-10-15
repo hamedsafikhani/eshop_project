@@ -123,7 +123,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = BASE_DIR / 'uploads' # all files handle by django
+MEDIA_ROOT = BASE_DIR / 'uploads' # all files handle by django physical address
+MEDIA_URL = '/media/' # for url address
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'

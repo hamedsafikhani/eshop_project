@@ -1,0 +1,25 @@
+{% extends 'shared/_layout.html' %}
+
+{% block title %}
+	پروفایل ها
+{% endblock %}
+
+
+{% block content %}
+    <div id="container">
+        <div id="row">
+            <div id="col-md-12">
+                <ul>
+                    {% for product in products %}
+                        <li>
+                            <img src="{{ product.user_image.url }}" alt="" width="350px"> {% comment %}khode django mifahme{% endcomment %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    
+{% endblock %}
