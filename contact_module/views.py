@@ -3,8 +3,8 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import FormView, CreateView
 
-from .forms import ContactUsForm, ContactUsModelForm
-from .models import ContactUs
+from .forms import  ContactUsModelForm, ProfileForm
+from .models import ContactUs, UserProfile
 
 
 # Create your views here.
@@ -70,12 +70,28 @@ class ContactUsView(CreateView):  # niaz be zakhire o form valid ina nadare chon
 
 
 ###########################temp
+def store_file(file): # handle file by python
+    with open('temp/image.jpg','wb+') as dest:
+        for chunk in file.chunks():
+            dest.write(chunk)
 class ProfileImage(View):
     def get(self, request):
-        return render(request, 'contact_module/profile-image.html')
+        form = ProfileForm()
+        return render(request, 'contact_module/profile-image.html',{
+            'form' : form
+        })
 
     def post(self, request):
-        print(request.FILES)
-        return redirect('/contact-us/profile-image')
+        # store_file(request.FILES['profile'])#python
+        # print(request.FILES)
+        submitted_form = ProfileForm(request.POST,request.FILES)
+        if submitted_form.is_valid():
+            profile = UserProfile(user_image=request.FILES['user_image']) #handle file by django auto path file to db
+            profile.save()
+            return redirect('/contact-us/profile-image')
+        return render(request, 'contact_module/profile-image.html', {
+            'form': submitted_form
+        })
+
 
 ###########################temp

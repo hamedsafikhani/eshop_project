@@ -19,3 +19,9 @@ class ContactUs(models.Model):
     class Meta:
         verbose_name = 'تماس با ما'
         verbose_name_plural = 'لیست تماس با ما'
+
+
+
+
+class UserProfile(models.Model):
+    user_image = models.FileField(upload_to='images') # add to setting BASEDIR / images for media file
