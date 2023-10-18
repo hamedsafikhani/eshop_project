@@ -68,6 +68,17 @@
 											<i class="fa fa-shopping-cart"></i>
 											افـزودن به سبـد خریـد
 										</button>
+
+                                        <form action="{% url 'favorite_product' %}" method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                                            <button type="submit" class="btn btn-fefault cart">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            ADD TO FAVORITE
+                                            </button>
+                                        </form>
+                                    
+
 									</span>
 								</div>
 								<div>
