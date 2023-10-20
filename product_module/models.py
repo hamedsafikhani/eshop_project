@@ -35,6 +35,7 @@ class Product(models.Model):
         ProductCategory,
         related_name='product_categories',
         verbose_name='دسته بندی ها')
+    image = models.ImageField(upload_to='images/product',null=True,blank=True,verbose_name='تصویر محصول')
     price = models.IntegerField(verbose_name='قیمت')
     brand = models.ForeignKey(ProductBrand,on_delete=models.CASCADE,null=True,verbose_name='برند')
     short_description = models.CharField(max_length=360, db_index=True, null=True, verbose_name='توضیحات کوتاه')

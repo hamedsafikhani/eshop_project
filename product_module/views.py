@@ -50,6 +50,14 @@ class ProductDetailView(DetailView):  # ba estefade az Detail View
     # khodesh az url/slug ro barmidare va behtare ke az get_absolute_trl tooye model estefade she,ba pk <int:pk> ham mishe
     template_name = 'product_module/product_detail.html'
     model = Product
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        loaded_product = self.object # dar list view ba in mitunim oon objecti ke khodesh entekhab karde ro vakeshi konim
+        request = self.request # request ham darun khodesh dare
+        product_id = request.session.get('favorite_product')
+        context['is_favorite'] = product_id == str(loaded_product.id)
+        return context
 
 
 # def product_detail(request, slug):
@@ -63,5 +71,4 @@ class AddFavoriteProduct(View):
         product_id = request.POST['product_id']
         product = Product.objects.get(pk=product_id)
         request.session["favorite_product"] = product_id
-        print(product_id)
         return redirect(product.get_absolute_url())
