@@ -31,15 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # main app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # internal app
     'product_module',
     'home_module',
     'contact_module',
+    'account_module',
+    #  external app
     'django_render_partial'
 
 ]
@@ -135,3 +139,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_COOKIE_AGE = 2000 #toole omre ye session
+
+AUTH_USER_MODEL = 'account_module.User' # niaz nis begim models.User , bayad haminoori bashe
